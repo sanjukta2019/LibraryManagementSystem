@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block title %}
+Profile Page
+{% endblock %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <strong>
+            <h1><a class="navbar-brand" href="/user_dash">Dashboard</a>
+        </strong></h1>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form method="POST" action="/search" class="d-flex">
+
+                <input class="form-control me-2" type="search" name="query"
+                    placeholder="Search by book name, author, or section">
+
+                <button class="btn btn-success" type="submit">Search</button>
+            </form>
+            <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
+
+            <div class="heading"><a href="{{ url_for('logout') }}" class="navbar-item">Logout</a></div>
+            <a class="nav-link active" aria-current="page" href="{{ url_for('user_dash') }}">Dashboard</a> 
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class=" row justify-content-center">
+        <div class="col-lg-12">
+            <h2>Your Books</h2>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Book Name</th>
+                       <th>Number of Days</th>
+                        <th>Status of Request</th>
+                        <th>Read or Unread By User</th>
+                        <th>Return Date</th>
+                        <th>Feedback of Book</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in user_request %}
+                    <tr>
+                        <td>{{entry.book.name}}</td>
+                        <td>{{entry.number_of_days}}</td>
+                        <td>{{entry.status}}</td>
+                        <td>
+                            <ul>
+                                {% if entry.status == "Approved" %}
+                                {% if not entry.read_by_user %}
+                                <strong> <a href="{{ url_for('mark_as_read', id=entry.id) }}">Not Read</a></strong>
+                                {% else %}
+
+                                <strong><strong> <a href="{{ url_for('mark_as_read', id=entry.id) }}">Read</a>
+                                    <strong><a class="nav-link active" aria-current="page" href="/book" >Read the Book</a></strong>    
+
+                                        {% endif %}
+                                        {% endif %}
+                        </td>
+                        <td>{{entry.return_date}}</td>
+                        <td><a href="{{url_for('submit_feedback', id=entry.book.id)}}">Submit Feedback</a> </td>
+
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

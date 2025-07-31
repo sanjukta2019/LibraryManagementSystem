@@ -1,0 +1,36 @@
+        {% extends "user_home.html" %}
+        {% block title %}
+        Search
+        {% endblock %}
+        {% block content %}
+        <div class="container">
+            <div class=" row justify-content-center">
+                <div class="col-sm-8"> 
+                    <h2>Search Results</h2>              
+                    <form action = '/search'>
+                    <table class="table">
+                    <thead>
+                        <tr>           
+                        <th>BookName</th>
+                        <th>Author</th>
+                        <th>Section</th>         
+                        </tr>
+                        </thead>
+                            <tbody>
+                                {% for entry in ebooks %}
+                                <tr>
+                                    <td>{{entry.name}}</td>
+                                    <td>{{ entry.author }}</td>
+                                    <td>{{entry.section_name}}</td>                   
+                                </tr>
+                                {% endfor %}
+                    
+                            </tbody>
+                        </table>                    
+                        <a href="/user_dash" class="btn btn-dark">Back</a>
+                    </form>             
+                </div>       
+            </div>
+          
+        </div>        
+        {% endblock %} 

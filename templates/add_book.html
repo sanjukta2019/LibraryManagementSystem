@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}
+Add A Book
+{% endblock %}
+{% block content %}
+
+<form action = '/add_book' method = "POST">
+    <h1>Add a Book</h1>
+    <label for = "name">Book Name</label>
+    <input type = "text" id = "name" name = "name"><br>
+    <label for = "content">Content</label>
+    <input type = "text" id = "content" name = "content"><br>
+    <label for = "author">Author</label>
+    <input type = "text" id = "author" name = "author"><br>
+    <label for = "dateissued">Date</label>
+    <input type = "date" id = "dateissued" name = "dateissued"><br>
+    <label for = "section_name">Section Name</label>
+    <input type = "text" id = "section_name" name = "section_name"><br> 
+    
+    <input type = "submit" value= "Add"><br>
+    
+    
+<a href ="/dashboard">Go Back</a>
+
+</form>
+{% endblock %} 

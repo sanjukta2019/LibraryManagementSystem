@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block title %}
+Signin Page
+{% endblock %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <strong>
+            <h1><a class="navbar-brand" href="/user_dash">Dashboard</a>
+        </strong></h1>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form method="POST" action="/search" class="d-flex">
+
+                <input class="form-control me-2" type="search" name="query"
+                    placeholder="Search by book name, author, or section">
+
+                <button class="btn btn-success" type="submit">Search</button>
+            </form>
+            <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
+
+            <div class="heading"><a href="{{ url_for('logout') }}" class="navbar-item">Logout</a></div>
+
+            <a class="nav-link active" aria-current="page" href="{{ url_for('profile') }}">Profile</a>
+        </div>
+    </div>
+</nav>
+
+<div style="margin-left: 50px; margin-right: 50px;">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>BookName</th>
+                <th>Author</th>
+                <th>Request for a book</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            {% if all_books|length >0 %}
+            {% for entry in all_books %}
+            <tr>
+                <td>{{entry.name}}</td>
+                <td>{{ entry.author }}</td>
+                <td><a href="/request-book/{{entry.id}}" class="btn btn-primary">Request</a></td>
+
+
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td> No books found
+                </td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{%endblock%}

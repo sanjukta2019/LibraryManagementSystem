@@ -1,0 +1,50 @@
+
+
+
+{% extends "layout.html" %}
+{% block title %}
+All Section
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class=" row justify-content-center">
+        <div class="col-sm-8">
+            <h2>Section MANAGEMENT</h2>
+<form action = '/allsect'>
+    <h1>Section</h1>
+    <table class = "table">
+        <thead>
+        <tr>
+            <th>Serial No.</th>
+            <th>Section Name</th>
+            <th>Datecreate</th>
+            <th>Description</th>
+            <th>User Id</th>
+        </tr>
+    </thead> 
+    <tbody>
+    {% for entry in all_sects %}
+    <tr>
+        <td>{{ loop.index }}</td>   
+        <td>{{ entry.name }}</td>
+        <td>{{ entry.datecreate }}</td>
+        <td>{{ entry.description }}</td>
+        <td>{{ entry.user_id }}</td>
+        <td>
+            <a href="/add_sect">+Add</a>
+            <a href= "/{{entry.id}}/update">Update</a>
+            <a href = "/{{entry.id}}/delete">Delete</a> 
+        </td>
+        
+    </tr>
+       
+    {% endfor %}   
+</tbody>
+</table>
+
+<a href ="/dashboard">Go to Dashboard</a>
+</form>
+</div>
+</div>
+</div>
+{% endblock %} 

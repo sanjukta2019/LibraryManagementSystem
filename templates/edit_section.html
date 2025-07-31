@@ -1,0 +1,23 @@
+
+{% extends "layout.html" %}
+{% block title %}
+All Users
+{% endblock %}
+{% block content %}
+
+
+<form action ="/{{this_sect.id}}/update" method="POST">
+    <label for = "name">Section Name</label>
+    <input type="text" id = "name" name="name">
+    <label for = "sect_date">Section Date</label>
+    <input type = "date" id = "sect_date" name = "sect_date"><br>
+    <label for = "description">Section Description</label>
+    <input type = "text" id = "description" name = "description"><br>
+    <input type = "submit" value= "Update">
+
+    <a href ="/dashboard">Go Back to Home</a>
+</form>
+
+{% endblock %} 
+
+

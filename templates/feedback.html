@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Feedback</title>
+</head>
+<body>
+    <h1>Submit Feedback</h1>
+    <form action="/submit_feedback/{{request_book.id}}" method="POST">
+        <label for="book_id">Book: {{request_book.name}}</label><br>
+        <textarea id="feedback_text" name="user_feedback" request_id ="request_id" placeholder="Enter your feedback" rows="4" cols="50"></textarea><br><br>
+
+        <input type="submit" value="Submit Feedback">
+    </form>
+</body>
+</html>
+
+

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}
+<h1>Library Management System</h1>
+{% endblock %}
+{% block content %}
+
+<div id= "main" class="container">
+    
+    <div id="canvas" class=" row justify-content-center">
+        <div class="col-sm-8">
+            
+            <h5>Welcome to Library Management System App!</h5>
+            
+
+            <a href="{{ url_for('login') }}" class="btn btn-dark">User Login</a>    
+            <a href="{{ url_for('signup') }}" class="btn btn-dark">Register</a> 
+
+            </div>
+
+    </div>
+  
+</div>
+
+
+{% endblock %}

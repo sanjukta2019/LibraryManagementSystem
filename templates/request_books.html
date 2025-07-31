@@ -1,0 +1,26 @@
+
+{% extends "layout.html" %}
+{% block title %}
+All Users
+{% endblock %}
+{% block content %}
+<form action = '/request-book/{{request_book.id}}' method = "POST">
+    <h1>{{request_book.id}}</h1>
+    
+    <label for = "number_of_days">Number of Days</label>
+    <input type = "number" id = "number_of_days" name = "number_of_days"><br>
+
+    <input type = "submit" value= "Submit"><br>
+    
+    
+<a href ="/user_dash">Go Back to Home</a>
+
+</form>
+{% endblock %} 
+
+
+
+"/request-book/<int:id>
+/approve_request/<int:id>
+
+'/approve_request/{{request_book.id}}'
